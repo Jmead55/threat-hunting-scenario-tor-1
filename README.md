@@ -130,23 +130,23 @@ DeviceNetworkEvents
 ### 4. Network Connection - TOR Network
 
 - **Timestamp:** `2026-06-02T21:38:31`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
+- **Event:** A network connection to IP `127.0.0.1` on port `9150` by user "labuser" was established using `tor.exe`, confirming TOR browser network activity.
 - **Action:** Connection success.
 - **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+- **File Path:** `c:\users\labuser\desktop\tor browser\browser\torbrowser\tor\tor.exe`
 
 ### 5. Additional Network Connections - TOR Browser Activity
 
 - **Timestamps:**
   - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
+  - `2026-06-02T21:38:31` - Local connection to `127.0.0.1` on port `9150`.
+- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "labuser" through the TOR browser.
+- **Action:** One successful connection detected.
 
 ### 6. File Creation - TOR Shopping List
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
+- **Timestamp:** `2026-06-02T21:38:31`
+- **Event:** The user "labuser" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
 - **Action:** File creation detected.
 - **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
 
@@ -154,12 +154,13 @@ DeviceNetworkEvents
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+The investigation confirmed that user **labuser** on endpoint **jvm** downloaded, installed, and actively used the Tor Browser. Evidence showed that the Tor Browser installer was downloaded to the user's **Downloads** directory and executed multiple times. Telemetry also revealed a silent installation and extraction process using the **/S** switch. Following installation, numerous Tor Browser-related files, including **tor.exe**, were created on the user's **Desktop**. Process execution logs identified multiple instances of **firefox.exe** associated with Tor Browser activity, indicating active browser usage. Additionally, network telemetry captured communications over **port 9150**, a port commonly used by the Tor Browser's local proxy service, further confirming Tor-related network activity. The investigation also identified the creation and subsequent access of a Tor-related text file named **tor-shopping-list.txt**. Based on the collected file, process, and network telemetry, the investigation successfully verified Tor Browser usage on endpoint **jvm** by user **labuser**. No unrelated activity was included in the scope of this report.
+
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+TOR usage was confirmed on the endpoint `jvm` by the user `labuser`. The device was isolated, and the user's direct manager was notified.
 
 ---
